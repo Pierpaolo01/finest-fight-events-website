@@ -1,5 +1,6 @@
 export default defineNuxtConfig({
   devtools: { enabled: true },
+  ssr: true,
   modules: ["@nuxtjs/tailwindcss",  "@nuxtjs/google-fonts", "@nuxtjs/strapi"],
   googleFonts: {
     families: {
