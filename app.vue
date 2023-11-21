@@ -1,8 +1,6 @@
 <template>
-  <div class="relative">
-    <Navigation />
-    <NuxtPage />
-  </div>
+  <Navigation />
+  <NuxtPage />
 </template>
 
 <style>

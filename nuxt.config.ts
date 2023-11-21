@@ -8,4 +8,9 @@ export default defineNuxtConfig({
       Lora: [400, 500, 600, 700, 800],
     }
   },
+  strapi: {
+    url: process.env.STRAPI_URL,
+    prefix: '/api',
+    version: 'v4',
+  },
 })
