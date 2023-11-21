@@ -1,29 +1,36 @@
 <template>
-    <div class="carousel-container relative overflow-hidden pb-12 flex-1 h-fit">
-        <div class="carousel-slide flex transition-transform duration-300"
-            :style="{ transform: `translateX(-${currentIndex * 100}%)` }">
-            <div class="carousel-item flex justify-evenly items-center w-full flex-shrink-0 border-b border-white/20"
-                v-for="(item, index) in items" :key="index">
-                <div>
-                    <span class="font-bold tracking-widest uppercase text-xs">{{
-                        item?.fighterANickname
-                    }}</span>
-                    <h4 class="text-xl uppercase font-semibold">
-                        {{ item?.fighterAName }}
-                    </h4>
+    <div class="carousel-container">
+        <div class="carousel-slide" :style="{ transform: `translateX(-${currentIndex * 100}%)` }">
+            <div class="carousel-item" v-for="(item, index) in items" :key="index">
+                <div class="flex flex-col justify-between h-full flex-1">
+                    <div>
+                        <span class="carousel-item__nickname">
+                            {{ item?.fighterANickname }}
+                        </span>
+                        <h4 class="carousel-item__name">
+                            {{ item?.fighterAName }}
+                        </h4>
+                    </div>
+                    <img :src="item?.fighterACover?.url" class="fighter float-left" draggable="false" alt="Carousel Item" />
                 </div>
-                <div class="flex justify-center items-center relative -space-x-8">
-                    <img :src="item?.fighterACover?.url" class="w-full h-44" draggable="false" alt="Carousel Item" />
-                    <img src="/ffe-versus.png" class="w-full h-auto self-start" draggable="false" alt="Carousel Item" />
-                    <img :src="item?.fighterBCover?.url" class="w-full h-44" draggable="false" alt="Carousel Item" />
+                <div class="carousel-item__images">
+                    <img :src="item?.fighterACover?.url" class="carousel-item__images-fighter" draggable="false"
+                        alt="Carousel Item" />
+                    <img src="/ffe-versus.png" class="w-full h-auto self-start max-w-[80px] mx-auto" draggable="false"
+                        alt="Carousel Item" />
+                    <img :src="item?.fighterBCover?.url" class="carousel-item__images-fighter" draggable="false"
+                        alt="Carousel Item" />
                 </div>
-                <div>
-                    <span class="font-bold tracking-widest uppercase text-xs">{{
-                        item?.fighterBNickname
-                    }}</span>
-                    <h4 class="text-xl uppercase font-semibold">
-                        {{ item?.fighterBName }}
-                    </h4>
+                <div class="text-right flex-1 flex flex-col justify-between h-full">
+                    <div>
+                        <span class="font-bold tracking-widest uppercase text-xs">
+                            {{ item?.fighterBNickname }}
+                        </span>
+                        <h4 class="text-xl uppercase font-semibold">
+                            {{ item?.fighterBName }}
+                        </h4>
+                    </div>
+                    <img :src="item?.fighterBCover?.url" class="fighter self-end" draggable="false" alt="Carousel Item" />
                 </div>
             </div>
         </div>
@@ -73,12 +80,49 @@ const prevItem = () => {
 };
 </script>
 
-<style>
+<style scoped lang="scss">
+.carousel-container {
+    @apply relative overflow-hidden pb-12 flex-1 h-fit;
+
+}
+
 .carousel-slide {
-    width: 100%;
+    @apply flex transition-transform duration-300 w-full;
 }
 
 .carousel-item {
-    min-width: 100%;
+    @apply min-w-full flex justify-evenly items-center w-full flex-shrink-0 border-b border-white/20;
+
+    &__nickname {
+        @apply font-bold tracking-widest uppercase text-xs;
+    }
+
+    &__name {
+        @apply text-xl uppercase font-semibold;
+    }
+
+    &__images {
+        @apply flex justify-center items-center relative;
+
+        @screen laptop {
+            @apply -space-x-8;
+        }
+
+        &-fighter {
+            @apply hidden;
+
+            @screen laptop {
+                @apply inline-block w-full h-44;
+            }
+        }
+    }
+
+    .fighter {
+        @apply w-fit max-h-48;
+
+        @screen laptop {
+            @apply hidden;
+        }
+    }
 }
 </style>

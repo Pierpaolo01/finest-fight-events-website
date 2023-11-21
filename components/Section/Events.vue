@@ -1,22 +1,22 @@
 <template>
-    <Section class="bg-ffe-bg text-white/80">
+    <Section class="events-section">
         <Container class="space-y-12">
             <div class="space-x-12 text-center">
-                <span class="uppercase text-3xl pb-2 tracking-widest font-semibold cursor-pointer hover:text-white"
-                    :class="{ 'text-white/20 border-b-2 border-white/20': selectedView === 'upcoming' }"
+                <span class="events-section__view-selector"
+                    :class="{ 'events-section__view-selector--active': selectedView === 'upcoming' }"
                     @click="selectedView = 'upcoming'">
                     upcoming
                 </span>
-                <span class="uppercase text-3xl pb-2 tracking-widest font-semibold cursor-pointer hover:text-white"
-                    :class="{ 'text-white/40 border-b-2 border-white/20': selectedView === 'past' }"
+                <span class="events-section__view-selector"
+                    :class="{ 'events-section__view-selector--active': selectedView === 'past' }"
                     @click="selectedView = 'past'">
                     past
                 </span>
             </div>
             <div>
-                <div class="flex justify-between gap-10" v-for="event in formattedData" :key="event.id">
+                <div class="events-section__event" v-for="event in formattedData" :key="event.id">
                     <LineupCarousel :items="event.lineups" />
-                    <div class="flex flex-col max-w-[510px] space-y-4">
+                    <div class="events-section__event-description flex-1">
                         <span class="text-white/80 uppercase text-sm font-bold tracking-widest">
                             {{ format(event.date) }}
                         </span>
@@ -51,3 +51,38 @@ const { data } = await useAsyncData("events", () =>
 
 const formattedData: Event = EventDTO(data.value?.data ?? []);
 </script>
+
+<style scoped lang="scss">
+.events-section {
+    @apply bg-ffe-bg text-white/80;
+
+    &__view-selector {
+        @apply uppercase pb-2 text-xl tracking-widest font-semibold cursor-pointer hover:text-white;
+
+        @screen laptop {
+            @apply text-3xl;
+        }
+    }
+
+    &__view-selector--active {
+        @apply text-white/20 border-b-2 border-white/20;
+    }
+
+    &__event {
+        @apply flex flex-col-reverse gap-10;
+
+        @screen laptop {
+            @apply flex-row justify-between gap-10;
+        }
+    }
+
+    &__event-description {
+        @apply flex flex-col w-full space-y-4;
+
+        @screen laptop {
+            @apply max-w-[510px];
+        }
+    }
+
+}
+</style>
