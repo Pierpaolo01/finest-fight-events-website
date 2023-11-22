@@ -4,7 +4,7 @@
             <div class="abouts-section__about" v-for="(about, index) in formattedData" :key="about.id"
                 :class="{ 'inverted': index % 2 === 0, }">
                 <div class="abouts-section__about-image">
-                    <img v-if="about.image" :src="about.image.url" alt="about_image">
+                    <img draggable="false" v-if="about.image" :src="about.image.url" alt="about_image">
                 </div>
                 <div class="abouts-section__about-item">
                     <h4> {{ about.title }} </h4>

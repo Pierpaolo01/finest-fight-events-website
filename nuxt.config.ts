@@ -1,6 +1,15 @@
+import axios from "axios";
+
 export default defineNuxtConfig({
   devtools: { enabled: true },
   ssr: true,
+  hooks: {
+    async 'nitro:config'(nitroConfig) {
+      const { data } = await axios.get('https://finest-fight-events-cms-9b085a52c151.herokuapp.com/api/events?populate[events]')
+
+      nitroConfig.prerender?.routes?.push('/', ...data.data.map((event: any) => `/events/${event.id}`));
+    },
+  },
   modules: ["@nuxtjs/tailwindcss",  "@nuxtjs/google-fonts", "@nuxtjs/strapi"],
   googleFonts: {
     families: {

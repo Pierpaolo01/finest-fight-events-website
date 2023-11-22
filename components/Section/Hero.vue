@@ -1,11 +1,7 @@
 <template>
-  <section
-    class="relative h-screen w-full bg-cover bg-center flex items-center justify-center"
-    :style="`background-image: url(${data?.data.attributes.featured_event.data.attributes.hero_image.data.attributes.url})`"
-  >
-    <div
-      class="h-fit w-fit bg-ffe-bg/60 p-4 rounded-md text-center text-white font-bold space-y-5"
-    >
+  <section class="relative h-screen w-full bg-cover bg-center flex items-center justify-center"
+    :style="`background-image: url(${data?.data.attributes.featured_event.data.attributes.hero_image.data.attributes.url})`">
+    <div class="h-fit w-fit bg-ffe-bg/60 p-4 rounded-md text-center text-white font-bold space-y-5">
       <p class="font-mont text-2xl">
         {{ format(data?.data.attributes.featured_event.data.attributes.date) }}
       </p>
@@ -16,7 +12,9 @@
         {{ data?.data.attributes.featured_event.data.attributes.location }}
       </p>
       <div class="space-x-6">
-        <Button variant="secondary" text="meer info" />
+        <NuxtLink :to="`/events/${data?.data.attributes.featured_event.data.id}`">
+          <Button variant="secondary" text="meer info" />
+        </NuxtLink>
         <Button variant="primary" text="tickets" />
       </div>
     </div>

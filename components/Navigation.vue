@@ -10,7 +10,9 @@
         </a>
       </div>
       <div class="self-center">
-        <img src="/fdg-logo.png" alt="fight & dine company logo" class="h-[60px] w-[108px]" />
+        <NuxtLink to="/">
+          <img src="/fdg-logo.png" alt="fight & dine company logo" class="h-[60px] w-[108px]" />
+        </NuxtLink>
       </div>
 
       <div class="space-x-4">
