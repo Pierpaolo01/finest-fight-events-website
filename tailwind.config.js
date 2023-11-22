@@ -16,6 +16,7 @@ export default {
         "ffe-bg": "#1A1A1A",
         "ffe-red": "#D2090A",
         "ffe-border": "#404040",
+        "ffe-off-white": "#EEE",
       },
     },
   },
