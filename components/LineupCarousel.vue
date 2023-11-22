@@ -4,8 +4,9 @@
             <div class="carousel-item" v-for="(item, index) in items" :key="index">
                 <div class="flex flex-col justify-between h-full flex-1">
                     <div>
-                        <span class="carousel-item__nickname">
+                        <span class="carousel-item__nickname h-[24px]">
                             {{ item?.fighterANickname }}
+                            <span class="opacity-0">.</span>
                         </span>
                         <h4 class="carousel-item__name">
                             {{ item?.fighterAName }}
@@ -23,9 +24,11 @@
                 </div>
                 <div class="text-right flex-1 flex flex-col justify-between h-full">
                     <div>
-                        <span class="font-bold tracking-widest uppercase text-xs">
+                        <span class="font-bold tracking-widest uppercase text-xs  h-[24px]">
                             {{ item?.fighterBNickname }}
+                            <span class="opacity-0">.</span>
                         </span>
+
                         <h4 class="text-xl uppercase font-semibold">
                             {{ item?.fighterBName }}
                         </h4>
@@ -83,7 +86,6 @@ const prevItem = () => {
 <style scoped lang="scss">
 .carousel-container {
     @apply relative overflow-hidden pb-12 flex-1 h-fit;
-
 }
 
 .carousel-slide {

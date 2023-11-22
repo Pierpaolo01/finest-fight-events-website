@@ -2,82 +2,42 @@
   <nav :class="{ 'navbar--sticky': isSticky }" class="navbar">
     <Container class="navbar__content-tablet">
       <div class="space-x-4">
-        <a
-          href="http://"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="link"
-        >
+        <a href="http://" target="_blank" rel="noopener noreferrer" class="link">
           online store
         </a>
-        <a
-          href="http://"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="link"
-        >
+        <a href="http://" target="_blank" rel="noopener noreferrer" class="link">
           events
         </a>
       </div>
       <div class="self-center">
-        <img
-          src="/fdg-logo.png"
-          alt="fight & dine company logo"
-          class="h-[60px] w-[108px]"
-        />
+        <img src="/fdg-logo.png" alt="fight & dine company logo" class="h-[60px] w-[108px]" />
       </div>
 
       <div class="space-x-4">
-        <a
-          href="http://"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="link"
-        >
+        <NuxtLink to="/#lineup" class="link">
           line up
-        </a>
+        </NuxtLink>
         <Button type="primary" text="tickets" />
       </div>
     </Container>
     <Container class="navbar__content-mobile">
       <div class="self-center">
-        <img
-          src="/fdg-logo.png"
-          alt="fight & dine company logo"
-          class="h-[38px] tablet:h-[60px] tablet:w-[108px]"
-        />
+        <img src="/fdg-logo.png" alt="fight & dine company logo" class="h-[38px] tablet:h-[60px] tablet:w-[108px]" />
       </div>
 
       <IconHamburger @click="mobileNavIsOpen = !mobileNavIsOpen" />
     </Container>
-    <Container
-      class="space-y-4 flex flex-col bg-white pb-4"
-      v-if="mobileNavIsOpen"
-    >
-      <a
-        href="http://"
-        target="_blank"
-        rel="noopener noreferrer"
-        class="link hover:bg-ffe-bg/10 p-4 -mx-4"
-      >
+    <Container class="space-y-4 flex flex-col bg-white pb-4" v-if="mobileNavIsOpen">
+      <a href="https://www.onlinefightstore.nl/" target="_blank" rel="noopener noreferrer"
+        class="link hover:bg-ffe-bg/10 p-4 -mx-4">
         online store
       </a>
-      <a
-        href="http://"
-        target="_blank"
-        rel="noopener noreferrer"
-        class="link hover:bg-ffe-bg/10 p-4 -mx-4"
-      >
+      <a href="http://" target="_blank" rel="noopener noreferrer" class="link hover:bg-ffe-bg/10 p-4 -mx-4">
         events
       </a>
-      <a
-        href="http://"
-        target="_blank"
-        rel="noopener noreferrer"
-        class="link hover:bg-ffe-bg/10 p-4 -mx-4"
-      >
+      <NuxtLink to="/#lineup" class="link hover:bg-ffe-bg/10 p-4 -mx-4">
         line up
-      </a>
+      </NuxtLink>
       <Button type="primary" text="tickets" />
     </Container>
   </nav>

@@ -1,6 +1,6 @@
 <template>
     <Section class="events-section">
-        <Container class="space-y-12">
+        <Container class="space-y-12" id="lineup">
             <div class="space-x-12 text-center">
                 <span class="events-section__view-selector"
                     :class="{ 'events-section__view-selector--active': selectedView === 'upcoming' }"

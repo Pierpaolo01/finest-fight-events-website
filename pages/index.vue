@@ -2,4 +2,5 @@
   <SectionHero />
   <SectionEvents />
   <SectionAbouts />
+  <Footer />
 </template>
