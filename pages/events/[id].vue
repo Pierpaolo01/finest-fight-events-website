@@ -1,7 +1,7 @@
 <template>
     <div v-if="formattedData">
         <SectionHeroEvent :data="formattedData" />
-        <SectionEventLineup />
+        <SectionEventLineup :data="formattedData" />
     </div>
 </template>
 

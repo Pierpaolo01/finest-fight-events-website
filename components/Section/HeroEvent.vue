@@ -30,7 +30,7 @@ import useFormattedDate from "~/composables/useDateFormat";
 
 const { format } = useFormattedDate();
 
-const props = defineProps({
+defineProps({
   data: {
     type: Object as PropType<SingleEventDTOType>,
     required: true,
