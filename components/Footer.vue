@@ -12,10 +12,9 @@
             <p class="py-2 px-0.5 text-red-500 absolute -bottom-10 left-0" v-if="formError">Er is iets fouts gegaan</p>
             <p class="py-2 px-0.5 text-green-500 absolute -bottom-10 left-0" v-if="formSuccess">Success, welkom!</p>
           </div>
-          <Button variant="secondary" text="signup" class="h-fit" :class="{ 'success': formSuccess }"
-            @click="submitForm" />
+          <Button variant="secondary" text="signup" class="h-fit"
+            :class="{ 'success mt-8 tablet:mt-0': formSuccess, 'mt-8 tablet:mt-0': formError }" @click="submitForm" />
         </div>
-        {{ formError }}
       </div>
       <div class="footer__row">
         <div>
