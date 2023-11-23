@@ -60,16 +60,16 @@ defineProps({
     }
 
     &__lineup {
-        @apply p-4;
+        @apply p-4 pb-0;
     }
 
     &__lineup--item {
-        @apply flex items-center justify-between border-b border-ffe-border/30 pt-4 first:pt-0;
+        @apply flex items-center justify-between border-b border-ffe-border/30 last:border-none pt-4 first:pt-0;
     }
 }
 
 .fighter {
-    @apply w-fit max-h-32 aspect-auto;
+    @apply w-auto max-h-32 aspect-auto flex-shrink;
 }
 
 .fighter-column {

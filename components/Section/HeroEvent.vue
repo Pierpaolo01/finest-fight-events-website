@@ -47,7 +47,7 @@ defineProps({
   top: 0;
   left: 0;
   width: 100%;
-  height: 100%;
+  height: 100vh;
   z-index: -1;
   background-size: cover;
   background-repeat: no-repeat;
@@ -65,11 +65,15 @@ defineProps({
     clip-path: polygon(100% 0, 0 100%, -100% -100%);
     z-index: -1;
 
-    @media screen and (min-width: 768px) {
-      height: 100%;
-      width: 80%;
+  }
 
+  @media screen and (min-width: 768px) {
+    &::before {
+      content: '';
+      height: 10vh;
+      width: 80%;
     }
+
   }
 }
 </style>
