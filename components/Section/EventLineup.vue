@@ -1,7 +1,7 @@
 <template>
     <Section class="bg-ffe-bg">
         <Container class="lineup-section">
-            <div class="tablet:max-w-[575px]">
+            <div class="max-w-2xl laptop:max-w-[575px]">
                 <div class="p-4 text-white flex flex-col justify-start items-start space-y-4">
                     <h2 class="uppercase text-3xl font-bold cursor-pointer">{{ data?.name }}</h2>
                     <p>
@@ -66,16 +66,16 @@ defineProps({
 
 <style lang="scss" setup>
 .lineup-section {
-    @apply flex flex-col gap-8;
+    @apply flex flex-col gap-8 items-center;
 
-    @screen tablet {
-        @apply flex-row gap-16;
+    @screen laptop {
+        @apply flex-row gap-16 items-start;
     }
 }
 
 
 .lineup-container {
-    @apply flex flex-col max-w-2xl text-center flex-shrink-0;
+    @apply flex flex-col max-w-2xl w-full tablet:w-auto text-center flex-shrink-0;
     /* bg-ffe-off-white shadow-inset rounded  */
 
     &__heading {
