@@ -75,7 +75,7 @@ defineProps({
       content: '';
       height: 100vh;
       width: 80%;
-      clip-path: polygon(0 1%, 100% 0, 37% 100%, 0% 100%);
+      clip-path: polygon(0 0%, 100% 0, 37% 100%, 0% 100%);
 
     }
 
