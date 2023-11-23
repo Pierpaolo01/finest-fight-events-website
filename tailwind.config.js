@@ -18,6 +18,9 @@ export default {
         "ffe-border": "#404040",
         "ffe-off-white": "#EEE",
       },
+      boxShadow: {
+        inset: "inset 0px 5px 20px -5px rgba(64,64,64,1)",
+      },
     },
   },
   plugins: [],

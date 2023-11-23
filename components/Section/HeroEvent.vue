@@ -1,7 +1,8 @@
 <template>
   <div class="overflow-hidden">
-    <Container class="relative h-screen w-full bg-cover bg-center flex items-center justify-center">
-      <div class="-mt-[30%] h-fit w-fit bg-ffe-bg/60 p-4 rounded-md text-center text-white font-bold space-y-5">
+    <Container class="relative h-screen w-full bg-cover bg-center flex items-center justify-start">
+      <div
+        class="-mt-[10%] h-fit w-fit text-center tablet:text-left bg-ffe-bg/60 p-4 rounded-md text-white font-bold space-y-5">
         <p class="font-mont text-2xl">
           {{ format(data?.date) }}
         </p>
@@ -11,7 +12,7 @@
         <p class="font-mont text-2xl">
           {{ data?.location }}
         </p>
-        <div class="tablet:space-x-6 space-y-6 tablet:space-y-0 flex flex-col tablet:flex-row justify-center">
+        <div class="tablet:space-x-6 space-y-6 tablet:space-y-0 flex flex-col tablet:flex-row justify-start">
           <NuxtLink :to="`/events/${data?.id}#lineup`">
             <Button variant="secondary" text="bekijk lineup" class="w-full" />
           </NuxtLink>
@@ -59,10 +60,12 @@ defineProps({
     top: 0;
     left: 0;
     width: 100%;
-    height: 70%;
+    height: 80%;
     opacity: 0.9;
     background-color: #1A1A1A;
-    clip-path: polygon(100% 0, 0 100%, -100% -100%);
+    /* clip-path: polygon(100% 0%, 10% 100%, -100% -100%); */
+    clip-path: polygon(100% 0%, 0% 100%, -100% -100%);
+
     z-index: -1;
 
   }
@@ -70,8 +73,10 @@ defineProps({
   @media screen and (min-width: 768px) {
     &::before {
       content: '';
-      height: 10vh;
+      height: 100vh;
       width: 80%;
+      clip-path: polygon(0 1%, 100% 0, 37% 100%, 0% 100%);
+
     }
 
   }
