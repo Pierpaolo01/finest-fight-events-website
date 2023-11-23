@@ -2,6 +2,7 @@
     <div v-if="formattedData">
         <SectionHeroEvent :data="formattedData" />
         <SectionEventLineup :data="formattedData" />
+        <SectionEventTickets :data="formattedData" />
     </div>
 </template>
 
