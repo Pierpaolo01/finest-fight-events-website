@@ -23,9 +23,9 @@
       </div>
     </Container>
     <Container class="navbar__content-mobile">
-      <div class="self-center">
+      <NuxtLink to="/" class="self-center">
         <img src="/fdg-logo.png" alt="fight & dine company logo" class="h-[38px] tablet:h-[60px] tablet:w-[108px]" />
-      </div>
+      </NuxtLink>
 
       <IconHamburger @click="mobileNavIsOpen = !mobileNavIsOpen" />
     </Container>

@@ -11,9 +11,9 @@
         <p class="font-mont text-2xl">
           {{ data?.location }}
         </p>
-        <div class="space-x-6">
+        <div class="tablet:space-x-6 space-y-6 tablet:space-y-0 flex flex-col tablet:flex-row justify-center">
           <NuxtLink :to="`/events/${data?.id}#lineup`">
-            <Button variant="secondary" text="bekijk lineup" />
+            <Button variant="secondary" text="bekijk lineup" class="w-full" />
           </NuxtLink>
           <Button variant="primary" text="tickets" />
         </div>

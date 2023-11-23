@@ -1,5 +1,5 @@
 <template>
-    <div class="bg-ffe-bg">
+    <Section class="bg-ffe-bg">
         <Container>
             <div class="lineup-container">
                 <div class="lineup-container__heading">
@@ -17,9 +17,11 @@
                             <img :src="lineup.fighterACover.url" alt="fighter_a" class="fighter" draggable="false">
                         </div>
                         <div>
-                            <img src="/ffe-versus.png" alt="versus" draggable="false">
+                            <img src="/ffe-versus.png"
+                                class="w-full h-auto self-start max-w-[60px] tablet:max-w-[80px] mx-auto" alt="versus"
+                                draggable="false">
                         </div>
-                        <div class="fighter-column">
+                        <div class="fighter-column reverse">
                             <div>
                                 <h3 class="text-xl font-semibold">{{ lineup.fighterBName }}</h3>
                                 <p class="text-sm"> {{ lineup.fighterBNickname }} <span class="opacity-0">.</span> </p>
@@ -30,7 +32,7 @@
                 </div>
             </div>
         </Container>
-    </div>
+    </Section>
 </template>
 
 <script setup lang="ts">
@@ -62,15 +64,25 @@ defineProps({
     }
 
     &__lineup--item {
-        @apply flex justify-between items-center border-b border-ffe-border/30 pt-4 first:pt-0;
+        @apply flex items-center justify-between border-b border-ffe-border/30 pt-4 first:pt-0;
     }
 }
 
 .fighter {
-    @apply w-fit max-h-32;
+    @apply w-fit max-h-32 aspect-auto;
 }
 
 .fighter-column {
-    @apply flex flex-col justify-between items-center min-h-full flex-1;
+    @apply flex flex-col justify-between items-center min-h-full flex-1 self-stretch;
+
+    @screen tablet {
+        @apply flex-row;
+    }
+}
+
+.reverse {
+    @screen tablet {
+        @apply flex-row-reverse;
+    }
 }
 </style>
