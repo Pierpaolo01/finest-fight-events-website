@@ -1,6 +1,6 @@
 <template>
-    <Section class="events-section">
-        <Container class="space-y-12" id="lineup">
+    <Section class="events-section" id="lineup">
+        <Container class="space-y-12">
             <div class="space-x-12 text-center">
                 <span class="events-section__view-selector"
                     :class="{ 'events-section__view-selector--active': selectedView === 'upcoming' }"
@@ -13,9 +13,10 @@
                     past
                 </span>
             </div>
-            <div>
-                <div class="events-section__event" v-for="event in formattedData" :key="event.id">
-                    <LineupCarousel :items="event.lineups" />
+            <!-- TODO make past & future events filter -->
+            <div class="space-y-6 divide-y divide-ffe-border" v-if="selectedView === 'upcoming'">
+                <div class="events-section__event pt-6 first:pt-0" v-for="event in formattedData" :key="event.id">
+                    <LineupCarousel v-if="event.lineups.length" :items="event.lineups" />
                     <div class="events-section__event-description flex-1">
                         <span class="text-white/80 uppercase text-sm font-bold tracking-widest">
                             {{ format(event.date) }}
@@ -25,12 +26,15 @@
                         <div class="flex flex-col tablet:flex-row gap-4">
                             <Button variant="primary" text="tickets" />
                             <NuxtLink :to="`/events/${event.id}`">
-                                <Button variant="secondary" text="meer info" />
+                                <Button variant="secondary" text="meer info" class="w-full" />
                             </NuxtLink>
                         </div>
                     </div>
                 </div>
             </div>
+            <p v-else class="text-center p-4 text-white/60 text-xl">
+                Er zijn geen gebeurtenissen uit het verleden
+            </p>
         </Container>
     </Section>
 </template>

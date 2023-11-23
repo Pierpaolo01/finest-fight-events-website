@@ -1,5 +1,5 @@
 <template>
-    <Section class="bg-ffe-bg text-white">
+    <Section class="bg-ffe-bg text-white" id="abouts">
         <Container>
             <div class="abouts-section__about" v-for="(about, index) in formattedData" :key="about.id"
                 :class="{ 'inverted': index % 2 === 0, }">

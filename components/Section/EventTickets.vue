@@ -1,57 +1,7 @@
 <template>
-    <Section class="bg-ffe-bg">
+    <Section class="bg-ffe-bg" id="tickets">
         <Container>
-            <!-- <table class="text-white w-full">
-                <thead>
-                    <tr class="border-b">
-                        <th class="text-left py-4">Tickets</th>
-                        <th class="text-left py-4 min-w-[100px]">Price</th>
-                        <th class="text-left py-4 float-right">Amount</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr class="space-x-4">
-                        <td class="pr-4">Gouden Diner Tafel inclusief 4 gangen diner & dranken Arrangement</td>
-                        <td class="min-w-[100px] py-4">
-                            € 2,500.00
-                        </td>
-                        <td class="pl-4 float-right">
-                            <span class="font-semibold uppercase">sold out</span>
-                        </td>
-                    </tr>
-                    <tr class="space-x-4">
-                        <td class="pr-4">Zilveren Diner Tafel inclusief 4 gangen diner & dranken Arrangement</td>
-                        <td class="min-w-[100px] py-4">
-                            € 2,000.00
-                        </td>
-                        <td class="pl-4">
-                            <input type="number"
-                                class="w-[100px] tablet:w-[170px] float-right px-4 py-2 rounded border border-ffe-border bg-transparent" />
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="pr-4">Early Bird Diner seats inclusief 2 gangen diner exclusief dranken Arrangement
-                        </td>
-                        <td class="min-w-[100px] py-4">
-                            € 200.00
-                        </td>
-                        <td class="pl-4">
-                            <input type="number"
-                                class="w-[100px] tablet:w-[170px] float-right px-4 py-2 rounded border border-ffe-border bg-transparent" />
-                        </td>
-                    </tr>
-                    <tr class="space-x-4">
-                        <td class="pr-4">Balkon tickets</td>
-                        <td class="min-w-[100px] py-4">
-                            € 50.00
-                        </td>
-                        <td class="pl-4">
-                            <input type="number"
-                                class="w-[100px] tablet:w-[170px] float-right px-4 py-2 rounded border border-ffe-border bg-transparent" />
-                        </td>
-                    </tr>
-                </tbody>
-            </table> -->
+            <!-- TODO Set this data in Strapi  -->
             <div class="container mx-auto text-white">
                 <div class="grid grid-cols-4 gap-4 border-b pb-4 mb-4">
                     <div class="font-bold col-span-2">Tickets</div>

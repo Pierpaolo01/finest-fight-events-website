@@ -5,9 +5,9 @@
         <a href="http://" target="_blank" rel="noopener noreferrer" class="link">
           online store
         </a>
-        <a href="http://" target="_blank" rel="noopener noreferrer" class="link">
-          events
-        </a>
+        <NuxtLink to="#abouts" class="link">
+          abouts
+        </NuxtLink>
       </div>
       <div class="self-center">
         <NuxtLink to="/">
@@ -16,10 +16,13 @@
       </div>
 
       <div class="space-x-4">
-        <NuxtLink to="/#lineup" class="link">
-          line up
+        <NuxtLink to="#lineup" class="link">
+          line ups
         </NuxtLink>
-        <Button type="primary" text="tickets" />
+
+        <NuxtLink :to="`/events/${data?.data.id}#tickets`">
+          <Button type="primary" text="tickets" />
+        </NuxtLink>
       </div>
     </Container>
     <Container class="navbar__content-mobile">
@@ -29,18 +32,21 @@
 
       <IconHamburger @click="mobileNavIsOpen = !mobileNavIsOpen" />
     </Container>
-    <Container class="space-y-4 flex flex-col bg-white pb-4" v-if="mobileNavIsOpen">
+    <Container class="tablet:hidden space-y-4 flex flex-col bg-white pb-4" v-if="mobileNavIsOpen"
+      @click="mobileNavIsOpen = false">
       <a href="https://www.onlinefightstore.nl/" target="_blank" rel="noopener noreferrer"
         class="link hover:bg-ffe-bg/10 p-4 -mx-4">
         online store
       </a>
-      <a href="http://" target="_blank" rel="noopener noreferrer" class="link hover:bg-ffe-bg/10 p-4 -mx-4">
-        events
-      </a>
+      <NuxtLink to="#abouts" class="link">
+        abouts
+      </NuxtLink>
       <NuxtLink to="/#lineup" class="link hover:bg-ffe-bg/10 p-4 -mx-4">
         line up
       </NuxtLink>
-      <Button type="primary" text="tickets" />
+      <NuxtLink :to="`/events/${data?.data.id}#tickets`">
+        <Button type="primary" text="tickets" />
+      </NuxtLink>
     </Container>
   </nav>
 </template>
@@ -62,6 +68,9 @@ onMounted(() => {
 onUnmounted(() => {
   window.removeEventListener("scroll", handleScroll);
 });
+
+const { data } = await useAsyncData("hero-section", () =>
+  findOne < { featured_event: any } > ("hero-section"));
 </script>
 
 <style scoped>

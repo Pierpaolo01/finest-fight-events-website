@@ -18,7 +18,7 @@
                         </span>
                     </h2>
                 </div>
-                <div class="lineup-container__lineup">
+                <div class="lineup-container__lineup" v-if="data?.lineups.length">
                     <div v-for="lineup in data?.lineups" :key="lineup.id" class="lineup-container__lineup--item">
                         <div class="triangle-top-left"></div>
                         <div class="fighter-column">
@@ -43,6 +43,9 @@
                         <div class="triangle-bottom-right"></div>
                     </div>
                 </div>
+                <p v-else class="lineup-container__lineup text-left p-4 text-white/60 text-xl">
+                    Nog geen lineup beschikbaar
+                </p>
             </div>
         </Container>
     </Section>
