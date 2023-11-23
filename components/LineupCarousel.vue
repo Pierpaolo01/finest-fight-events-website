@@ -4,13 +4,12 @@
             <div class="carousel-item" v-for="(item, index) in items" :key="index">
                 <div class="flex flex-col justify-between h-full flex-1">
                     <div>
-                        <span class="carousel-item__nickname h-[24px]">
-                            {{ item?.fighterANickname }}
-                            <span class="opacity-0">.</span>
-                        </span>
                         <h4 class="carousel-item__name">
                             {{ item?.fighterAName }}
                         </h4>
+                        <span class="carousel-item__nickname h-[24px]">
+                            {{ item?.fighterANickname }}
+                        </span>
                     </div>
                     <img :src="item?.fighterACover?.url" class="fighter float-left" draggable="false" alt="Carousel Item" />
                 </div>
@@ -24,14 +23,12 @@
                 </div>
                 <div class="text-right flex-1 flex flex-col justify-between h-full">
                     <div>
-                        <span class="font-bold tracking-widest uppercase text-xs  h-[24px]">
-                            {{ item?.fighterBNickname }}
-                            <span class="opacity-0">.</span>
-                        </span>
-
                         <h4 class="text-xl uppercase font-semibold">
                             {{ item?.fighterBName }}
                         </h4>
+                        <span class="font-bold tracking-widest uppercase text-xs text-right h-[24px]">
+                            {{ item?.fighterBNickname }}
+                        </span>
                     </div>
                     <img :src="item?.fighterBCover?.url" class="fighter self-end" draggable="false" alt="Carousel Item" />
                 </div>

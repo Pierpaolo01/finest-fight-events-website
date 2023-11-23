@@ -38,14 +38,14 @@
         class="link hover:bg-ffe-bg/10 p-4 -mx-4">
         online store
       </a>
-      <NuxtLink to="#abouts" class="link">
+      <NuxtLink to="/#abouts" class="link">
         abouts
       </NuxtLink>
       <NuxtLink to="/#lineup" class="link hover:bg-ffe-bg/10 p-4 -mx-4">
         line up
       </NuxtLink>
       <NuxtLink :to="`/events/${data?.data.id}#tickets`">
-        <Button type="primary" text="tickets" />
+        <Button type="primary" text="tickets" class="w-full" />
       </NuxtLink>
     </Container>
   </nav>

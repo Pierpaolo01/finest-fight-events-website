@@ -10,6 +10,11 @@ export default defineNuxtConfig({
       nitroConfig.prerender?.routes?.push('/', ...data.data.map((event: any) => `/events/${event.id}`));
     },
   },
+  router: {
+    options: {
+      scrollBehaviorType: 'smooth'
+    }
+  },
   modules: ["@nuxtjs/tailwindcss",  "@nuxtjs/google-fonts", "@nuxtjs/strapi"],
   googleFonts: {
     families: {

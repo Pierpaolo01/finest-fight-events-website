@@ -15,7 +15,9 @@
         <NuxtLink :to="`/events/${data?.data.attributes.featured_event.data.id}`">
           <Button variant="secondary" text="meer info" />
         </NuxtLink>
-        <Button variant="primary" text="tickets" />
+        <NuxtLink :to="`/events/${data?.data.attributes.featured_event.data.id}#tickets`">
+          <Button variant="primary" text="tickets" />
+        </NuxtLink>
       </div>
     </div>
   </section>
