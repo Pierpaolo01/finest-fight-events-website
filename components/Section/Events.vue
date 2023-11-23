@@ -24,7 +24,9 @@
                         <p class="font-semibold text-xl"> {{ event.name }} </p>
                         <p> {{ event.teaser }} </p>
                         <div class="flex flex-col tablet:flex-row gap-4">
-                            <Button variant="primary" text="tickets" />
+                            <NuxtLink :to="`/events/${event.id}#tickets`">
+                                <Button variant="primary" text="tickets" class="w-full" />
+                            </NuxtLink>
                             <NuxtLink :to="`/events/${event.id}`">
                                 <Button variant="secondary" text="meer info" class="w-full" />
                             </NuxtLink>
