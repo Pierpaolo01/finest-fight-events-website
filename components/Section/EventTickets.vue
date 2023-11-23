@@ -18,7 +18,7 @@
                         }}</span></div>
                         <div class="py-2 text-right col-span-2 tablet:col-span-1">
                             <p class="tablet:hidden pb-4">{{ ticket.price }}</p>
-                            <input type="number" v-model="ticket.amount"
+                            <input type="number" v-model="ticket.amount" placeholder="0"
                                 class="w-[100px] tablet:w-[170px] float-right px-4 py-2 rounded border border-ffe-border bg-transparent" />
                         </div>
                     </div>
@@ -42,10 +42,10 @@ defineProps({
 });
 
 const tickets = [
-    { id: 1, name: 'Gouden Diner Tafel inclusief 4 gangen diner & dranken Arrangement', price: '€ 2,500.00', amount: 0 },
-    { id: 2, name: 'Zilveren Diner Tafel inclusief 4 gangen diner & dranken Arrangement', price: '€ 2,000.00', amount: 0 },
-    { id: 3, name: 'Early Bird Diner seats inclusief 2 gangen diner exclusief dranken Arrangement', price: '€ 200.00', amount: 0 },
-    { id: 4, name: 'Balkon tickets', price: '€ 50.00', amount: 0 },
+    { id: 1, name: 'Gouden Diner Tafel inclusief 4 gangen diner & dranken Arrangement', price: '€ 2,500.00', amount: '' },
+    { id: 2, name: 'Zilveren Diner Tafel inclusief 4 gangen diner & dranken Arrangement', price: '€ 2,000.00', amount: '' },
+    { id: 3, name: 'Early Bird Diner seats inclusief 2 gangen diner exclusief dranken Arrangement', price: '€ 200.00', amount: '' },
+    { id: 4, name: 'Balkon tickets', price: '€ 50.00', amount: '' },
 ];
 
 </script>

@@ -1,5 +1,5 @@
 <template>
-    <Section class="bg-ffe-bg">
+    <Section class="bg-ffe-bg" id="lineup">
         <Container class="lineup-section">
             <div class="max-w-2xl laptop:max-w-[575px]">
                 <div class="p-4 text-white flex flex-col justify-start items-start space-y-4">

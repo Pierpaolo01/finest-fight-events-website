@@ -1,12 +1,11 @@
 export default function useFormattedDate() {
     const format = (date: string, { locale = 'default', onlyDate = false } = {}) => {
-      // TODO fix hydration issue when using SSR
-      // TODO make the options work
-      // const options = onlyDate
-      //   ? { year: 'numeric', month: 'numeric', day: 'numeric', hour: undefined, minute: undefined, second: undefined}
-      //   : { year: 'numeric', month: 'number', day: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric' };
-  
-      return new Intl.DateTimeFormat(locale).format(new Date(date));
+      // TODO Make this nice
+      return new Intl.DateTimeFormat(locale, {
+            year: 'numeric',
+            month: 'short', // 'short' will give you the abbreviated month
+            day: '2-digit'
+        }).format(new Date(date));
     };
   
     return { format };

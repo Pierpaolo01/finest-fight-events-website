@@ -2,7 +2,7 @@
   <section class="relative h-screen w-full bg-cover bg-center flex items-center justify-center"
     :style="`background-image: url(${data?.data.attributes.featured_event.data.attributes.hero_image.data.attributes.url})`">
     <div class="h-fit w-fit bg-ffe-bg/60 p-4 rounded-md text-center text-white font-bold space-y-5">
-      <p class="font-mont text-2xl">
+      <p class="font-mont text-2xl uppercase">
         {{ format(data?.data.attributes.featured_event.data.attributes.date) }}
       </p>
       <h1 class="text-4xl md:text-6xl font-lora uppercase">
