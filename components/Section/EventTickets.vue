@@ -23,7 +23,9 @@
         </div>
       </div>
       <div class="flex tablet:justify-end mt-4">
-        <Button variant="primary" text="koop tickets" class="w-full tablet:w-fit" />
+        <a :href="data?.ticket_link" target="_blank">
+          <Button variant="primary" text="koop tickets" class="w-full tablet:w-fit" />
+        </a>
       </div>
     </Container>
   </Section>

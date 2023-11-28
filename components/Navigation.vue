@@ -9,21 +9,20 @@
       </div>
       <div class="self-center">
         <NuxtLink to="/">
-          <img src="/FFE_Logo.png" alt="fight & dine company logo" class="h-[60px] w-[108px]" />
+          <img src="/FFE_Logo-dark.png" alt="fight & dine company logo" class="h-[60px] w-[108px]" />
         </NuxtLink>
       </div>
 
       <div class="space-x-4">
         <NuxtLink to="#lineup" class="link"> line ups </NuxtLink>
-
-        <NuxtLink :to="`/events/${data?.data.id}#tickets`">
+        <a :href="ticketLink" target="_blank">
           <Button type="primary" text="tickets" />
-        </NuxtLink>
+        </a>
       </div>
     </Container>
     <Container class="navbar__content-mobile">
       <NuxtLink to="/" class="self-center">
-        <img src="/FFE_Logo.png" alt="fight & dine company logo" class="h-[38px] tablet:h-[60px] tablet:w-[108px]" />
+        <img src="/FFE_Logo-dark.png" alt="fight & dine company logo" class="h-[38px] tablet:h-[60px] tablet:w-[108px]" />
       </NuxtLink>
 
       <IconHamburger @click="mobileNavIsOpen = !mobileNavIsOpen" />
@@ -38,14 +37,14 @@
       <NuxtLink to="/#lineup" class="link hover:bg-ffe-bg/10 p-4 -mx-4">
         line up
       </NuxtLink>
-      <NuxtLink :to="`/events/${data?.data.id}#tickets`">
+      <a :href="ticketLink" target="_blank">
         <Button type="primary" text="tickets" class="w-full" />
-      </NuxtLink>
+      </a>
     </Container>
   </nav>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { onMounted, onUnmounted, ref } from "vue";
 
 const isSticky = ref(false);
@@ -63,10 +62,13 @@ onUnmounted(() => {
   window.removeEventListener("scroll", handleScroll);
 });
 
-const { data } = await useAsyncData(
-  "hero-section",
-  () => findOne < { featured_event: any } > "hero-section"
+const { findOne } = useStrapi();
+
+const { data } = await useAsyncData("hero-section", () =>
+  findOne<{ featured_event: any }>("hero-section", { populate: "*" })
 );
+
+const ticketLink = data?.value?.data?.attributes?.featured_event?.data?.attributes?.ticket_link;
 </script>
 
 <style scoped>

@@ -16,9 +16,9 @@
           <NuxtLink :to="`/events/${data?.id}#lineup`">
             <Button variant="secondary" text="bekijk lineup" class="w-full" />
           </NuxtLink>
-          <NuxtLink :to="`/events/${data?.id}#tickets`">
+          <a :href="data?.ticket_link" target="_blank">
             <Button variant="primary" text="tickets" class="w-full" />
-          </NuxtLink>
+          </a>
         </div>
       </div>
     </Container>

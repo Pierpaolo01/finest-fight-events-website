@@ -20,6 +20,7 @@ export const EventDTO = (data: any[]) => {
       promo_assets: attributes.promo_assets?.data.map((asset: any) =>
         MediaDTO(asset)
       ),
+      ticket_link: attributes.ticket_link,
       createdAt: attributes.createdAt,
       updatedAt: attributes.updatedAt,
       publishedAt: attributes.publishedAt,
@@ -45,6 +46,7 @@ export const SingleEventDTO = (data: any) => {
     promo_assets: attributes.promo_assets?.data.map((asset: any) =>
       MediaDTO(asset)
     ),
+    ticket_link: attributes.ticket_link,
     createdAt: attributes.createdAt,
     updatedAt: attributes.updatedAt,
     publishedAt: attributes.publishedAt,
