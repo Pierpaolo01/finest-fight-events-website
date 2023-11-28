@@ -13,7 +13,7 @@
           {{ data?.location }}
         </p>
         <div class="tablet:space-x-6 space-y-6 tablet:space-y-0 flex flex-col tablet:flex-row justify-start">
-          <NuxtLink :to="`/events/${data?.id}#lineup`">
+          <NuxtLink :to="`/upcoming/events/${data?.id}#lineup`">
             <Button variant="secondary" text="bekijk lineup" class="w-full" />
           </NuxtLink>
           <a :href="data?.ticket_link" target="_blank">

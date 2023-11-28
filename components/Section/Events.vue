@@ -27,7 +27,7 @@
                             <a :href="event.ticket_link" target="_blank">
                                 <Button variant="primary" text="tickets" class="w-full" />
                             </a>
-                            <NuxtLink :to="`/events/${event.id}`">
+                            <NuxtLink :to="`/upcoming/events/${event.id}`">
                                 <Button variant="secondary" text="meer info" class="w-full" />
                             </NuxtLink>
                         </div>

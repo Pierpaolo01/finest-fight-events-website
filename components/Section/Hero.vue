@@ -12,10 +12,10 @@
         {{ data?.data.attributes.featured_event.data.attributes.location }}
       </p>
       <div class="space-x-6">
-        <NuxtLink :to="`/events/${data?.data.attributes.featured_event.data.id}`">
+        <NuxtLink :to="`/upcoming/events/${data?.data.attributes.featured_event.data.id}`">
           <Button variant="secondary" text="meer info" />
         </NuxtLink>
-        <NuxtLink :to="`/events/${data?.data.attributes.featured_event.data.id}#tickets`">
+        <NuxtLink :to="`/upcoming/events/${data?.data.attributes.featured_event.data.id}#tickets`">
           <Button variant="primary" text="tickets" />
         </NuxtLink>
       </div>
