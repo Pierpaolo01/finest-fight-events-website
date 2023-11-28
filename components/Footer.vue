@@ -3,7 +3,7 @@
   <Section class="footer border-t border-ffe-border">
     <Container class="footer__container">
       <div class="footer__row">
-        <img src="/FFE_Logo.png" alt="company_logo" class="max-h-[60px] max-w-[108px]" draggable="false" />
+        <img src="/FFE_Logo-light.png" alt="company_logo" class="max-h-[60px] max-w-[108px]" draggable="false" />
 
         <div class="footer_links">
           <div class="relative">
