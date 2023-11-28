@@ -4,8 +4,10 @@
             <div class="carousel-item cursor-pointer" v-for="(item, index) in items" :key="index"
                 @click="toggleMute(index)">
                 <div class="carousel-item__video">
-                    <video :id="'video' + index" :src="item?.url" class="carousel-item__video-file" loop playsinline
-                        autoplay muted></video>
+                    <video v-if="item?.mime === 'video'" :id="'video' + index" :src="item?.url"
+                        class="carousel-item__video-file" loop playsinline autoplay muted></video>
+                    <img v-if="item?.mime === 'image'" :id="'video' + index" :src="item?.url"
+                        class="carousel-item__video-file" />
                 </div>
             </div>
         </div>
@@ -94,11 +96,11 @@ const prevItem = () => {
         @apply flex justify-center items-center w-full max-h-[500px];
 
         &-file {
-            width: 100%; // This will make the video take the full width of the container
-            height: auto; // This will maintain the aspect ratio
-            max-height: 500px; // Adjust this as needed
-            object-fit: contain; // This ensures the video is scaled correctly to fit the container
-            object-position: center; // This centers the video in the container
+            width: 100%;
+            height: auto;
+            max-height: 500px;
+            object-fit: contain;
+            object-position: center;
         }
     }
 

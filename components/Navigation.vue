@@ -9,7 +9,7 @@
       </div>
       <div class="self-center">
         <NuxtLink to="/">
-          <img src="/FFE_Logo-dark.png" alt="fight & dine company logo" class="h-[60px] w-[108px]" />
+          <img src="/FFE_Logo-dark.png" alt="fight & dine company logo" class="h-[48px] w-auto" />
         </NuxtLink>
       </div>
 
@@ -22,7 +22,7 @@
     </Container>
     <Container class="navbar__content-mobile">
       <NuxtLink to="/" class="self-center">
-        <img src="/FFE_Logo-dark.png" alt="fight & dine company logo" class="h-[38px] tablet:h-[60px] tablet:w-[108px]" />
+        <img src="/FFE_Logo-dark.png" alt="fight & dine company logo" class="h-[42px] w-auto" />
       </NuxtLink>
 
       <IconHamburger @click="mobileNavIsOpen = !mobileNavIsOpen" />

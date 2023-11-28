@@ -15,7 +15,7 @@
             </div>
             <!-- TODO make past & future events filter -->
             <div class="space-y-6 divide-y divide-ffe-border" v-if="selectedView === 'upcoming'">
-                <div class="events-section__event pt-6 first:pt-0" v-for="event in formattedData" :key="event.id">
+                <div class="events-section__event pt-6 first:pt-0" v-for="event in displayEvents" :key="event.id">
                     <PromosCarousel v-if="event.promo_assets.length" :items="event.promo_assets" />
                     <div class="events-section__event-description flex-1">
                         <span class="text-white/80 uppercase text-sm font-bold tracking-widest">
@@ -61,8 +61,31 @@ const { data } = await useAsyncData("events", () =>
         },
     })
 )
-// TODO sort data by upcoming events & in chronological order
+
 const formattedData: Event = EventDTO(data.value?.data ?? []);
+
+//TODO Test this once there's more events to display
+const displayEvents = computed(() => {
+    const now = new Date().toISOString();
+
+    if (selectedView.value === "upcoming") {
+        return formattedData
+            .filter(({ date }) => date > new Date().toISOString())
+            .sort((a, b) => {
+                const dateA = new Date(a.date);
+                const dateB = new Date(b.date);
+                return dateA.getTime() - dateB.getTime();
+            });
+    } else {
+        return formattedData
+            .filter(({ date }) => date < now)
+            .sort((a, b) => {
+                const dateA = new Date(a.date);
+                const dateB = new Date(b.date);
+                return dateB.getTime() - dateA.getTime();
+            });
+    }
+});
 </script>
 
 <style scoped lang="scss">
