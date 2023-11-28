@@ -1,27 +1,31 @@
 <template>
-    <div v-if="formattedData">
-        <SectionHeroEvent :data="formattedData" />
-        <SectionEventLineup :data="formattedData" />
-        <SectionEventTickets :data="formattedData" />
-    </div>
+  <div v-if="formattedData">
+    <SectionHeroEvent :data="formattedData" />
+    <SectionEventLineup :data="formattedData" />
+    <SectionEventTickets :data="formattedData" />
+  </div>
 </template>
 
 <script lang="ts" setup>
-import { SingleEventDTO } from '~/DTO/EventDTO';
+import { SingleEventDTO } from "~/DTO/EventDTO";
 
 const { findOne } = useStrapi();
 const route = useRoute();
 
 const { data } = await useAsyncData(`events-${route.params.id}`, () =>
-    findOne("events", route.params.id as string, {
-        populate: {
-            lineups: {
-                populate: "*",
-            },
-            hero_image: true,
-        },
-    })
-)
+  findOne("events", route.params.id as string, {
+    populate: {
+      lineups: {
+        populate: "*",
+      },
+      hero_image: true,
+    },
+  })
+);
 
 const formattedData = SingleEventDTO(data.value?.data);
+
+useHead({
+  title: `${formattedData?.name.toUpperCase()} - Finest Fight Events`,
+});
 </script>
