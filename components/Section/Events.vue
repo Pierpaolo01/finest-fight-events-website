@@ -16,7 +16,7 @@
             <!-- TODO make past & future events filter -->
             <div class="space-y-6 divide-y divide-ffe-border" v-if="selectedView === 'upcoming'">
                 <div class="events-section__event pt-6 first:pt-0" v-for="event in formattedData" :key="event.id">
-                    <LineupCarousel v-if="event.lineups.length" :items="event.lineups" />
+                    <PromosCarousel v-if="event.promo_assets.length" :items="event.promo_assets" />
                     <div class="events-section__event-description flex-1">
                         <span class="text-white/80 uppercase text-sm font-bold tracking-widest">
                             {{ format(event.date) }}
@@ -57,10 +57,11 @@ const { data } = await useAsyncData("events", () =>
             lineups: {
                 populate: "*",
             },
+            promo_assets: "*"
         },
     })
 )
-
+// TODO sort data by upcoming events & in chronological order
 const formattedData: Event = EventDTO(data.value?.data ?? []);
 </script>
 
