@@ -17,7 +17,7 @@ export const EventDTO = (data: any[]) => {
       teaser: attributes.teaser,
       heroImage: MediaDTO(attributes.hero_image?.data),
       lineups: attributes.lineups.data.map((lineup: any) => LineupDTO(lineup)),
-      promo_assets: attributes.promo_assets.data.map((asset: any) =>
+      promo_assets: attributes.promo_assets?.data.map((asset: any) =>
         MediaDTO(asset)
       ),
       createdAt: attributes.createdAt,
@@ -42,7 +42,7 @@ export const SingleEventDTO = (data: any) => {
     teaser: attributes.teaser,
     heroImage: MediaDTO(attributes.hero_image?.data),
     lineups: attributes.lineups.data.map((lineup: any) => LineupDTO(lineup)),
-    promo_assets: attributes.promo_assets.data.map((asset: any) =>
+    promo_assets: attributes.promo_assets?.data.map((asset: any) =>
       MediaDTO(asset)
     ),
     createdAt: attributes.createdAt,
