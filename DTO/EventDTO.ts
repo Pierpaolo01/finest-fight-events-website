@@ -1,3 +1,4 @@
+import { EventTicketsDTO } from "./EventTicketsDTO";
 import { LineupDTO } from "./LineupDTO";
 import { MediaDTO } from "./MediaDTO";
 
@@ -21,6 +22,9 @@ export const EventDTO = (data: any[]) => {
         MediaDTO(asset)
       ),
       ticket_link: attributes.ticket_link,
+      event_tickets: attributes.event_tickets?.data.map((ticket: any) =>
+        EventTicketsDTO(ticket)
+      ),
       createdAt: attributes.createdAt,
       updatedAt: attributes.updatedAt,
       publishedAt: attributes.publishedAt,
@@ -45,6 +49,9 @@ export const SingleEventDTO = (data: any) => {
     lineups: attributes.lineups.data.map((lineup: any) => LineupDTO(lineup)),
     promo_assets: attributes.promo_assets?.data.map((asset: any) =>
       MediaDTO(asset)
+    ),
+    event_tickets: attributes.event_tickets?.data.map((ticket: any) =>
+      EventTicketsDTO(ticket)
     ),
     ticket_link: attributes.ticket_link,
     createdAt: attributes.createdAt,

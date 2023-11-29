@@ -18,13 +18,14 @@ const { data } = await useAsyncData(`events-${route.params.id}`, () =>
       lineups: {
         populate: "*",
       },
-      hero_image: true,
+      hero_image: "*",
+      event_tickets: "*",
     },
   })
 );
 
 const formattedData = SingleEventDTO(data.value?.data);
-
+console.log(formattedData);
 useHead({
   title: `${formattedData?.name.toUpperCase()} - Finest Fight Events`,
 });

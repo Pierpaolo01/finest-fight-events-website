@@ -10,13 +10,17 @@
           </div>
         </div>
         <div class="space-y-4">
-          <div v-for="ticket in tickets" :key="ticket.id" class="grid grid-cols-3 gap-4">
+          <div
+            v-for="ticket in data?.event_tickets"
+            :key="ticket.id"
+            class="grid grid-cols-3 gap-4"
+          >
             <div class="py-2 col-span-2 flex items-center">
-              {{ ticket.name }}
+              {{ ticket.ticket }}
             </div>
             <div class="py-2">
               <span class="float-right">
-                {{ ticket.price }}
+                {{ formatCurrency(ticket.price) }}
               </span>
             </div>
           </div>
@@ -24,7 +28,11 @@
       </div>
       <div class="flex tablet:justify-end mt-4">
         <a :href="data?.ticket_link" target="_blank">
-          <Button variant="primary" text="koop tickets" class="w-full tablet:w-fit" />
+          <Button
+            variant="primary"
+            text="koop tickets"
+            class="w-full tablet:w-fit"
+          />
         </a>
       </div>
     </Container>
@@ -33,6 +41,8 @@
 
 <script setup lang="ts">
 import type { SingleEventDTOType } from "~/DTO/EventDTO";
+
+const { formatCurrency } = useCurrencyFormat();
 
 defineProps({
   data: {
