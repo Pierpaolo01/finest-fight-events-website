@@ -2,14 +2,23 @@
   <nav :class="{ 'navbar--sticky': isSticky }" class="navbar">
     <Container class="navbar__content-tablet">
       <div class="space-x-4">
-        <a href="https://www.onlinefightstore.nl/" target="_blank" rel="noopener noreferrer" class="link">
+        <a
+          href="https://www.onlinefightstore.nl/"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="link"
+        >
           online store
         </a>
         <NuxtLink to="#abouts" class="link"> about </NuxtLink>
       </div>
       <div class="self-center">
         <NuxtLink to="/">
-          <img src="/FFE_Logo-dark.png" alt="fight & dine company logo" class="h-[48px] w-auto" />
+          <img
+            src="/FFE_Logo-dark.png"
+            alt="fight & dine company logo"
+            class="h-[48px] w-auto"
+          />
         </NuxtLink>
       </div>
 
@@ -22,15 +31,26 @@
     </Container>
     <Container class="navbar__content-mobile">
       <NuxtLink to="/" class="self-center">
-        <img src="/FFE_Logo-dark.png" alt="fight & dine company logo" class="h-[42px] w-auto" />
+        <img
+          src="/FFE_Logo-dark.png"
+          alt="fight & dine company logo"
+          class="h-[42px] w-auto"
+        />
       </NuxtLink>
 
       <IconHamburger @click="mobileNavIsOpen = !mobileNavIsOpen" />
     </Container>
-    <Container class="tablet:hidden space-y-4 flex flex-col bg-white pb-4" v-if="mobileNavIsOpen"
-      @click="mobileNavIsOpen = false">
-      <a href="https://www.onlinefightstore.nl/" target="_blank" rel="noopener noreferrer"
-        class="link hover:bg-ffe-bg/10 p-4 -mx-4">
+    <Container
+      class="tablet:hidden space-y-4 flex flex-col bg-white pb-4"
+      v-if="mobileNavIsOpen"
+      @click="mobileNavIsOpen = false"
+    >
+      <a
+        href="https://www.onlinefightstore.nl/"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="link hover:bg-ffe-bg/10 p-4 -mx-4"
+      >
         online store
       </a>
       <NuxtLink to="/#abouts" class="link"> about </NuxtLink>
@@ -68,7 +88,8 @@ const { data } = await useAsyncData("hero-section", () =>
   findOne<{ featured_event: any }>("hero-section", { populate: "*" })
 );
 
-const ticketLink = data?.value?.data?.attributes?.featured_event?.data?.attributes?.ticket_link;
+const ticketLink =
+  data?.value?.data?.attributes?.featured_event?.data?.attributes?.ticket_link;
 </script>
 
 <style scoped>

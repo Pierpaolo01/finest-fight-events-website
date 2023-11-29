@@ -1,25 +1,46 @@
-//TODO freshen up the footer
 <template>
   <Section class="footer border-t border-ffe-border">
     <Container class="footer__container">
       <div class="footer__row">
-        <img src="/FFE_Logo-light.png" alt="company_logo" class="max-h-[60px] max-w-[108px]" draggable="false" />
+        <img
+          src="/FFE_Logo-light.png"
+          alt="company_logo"
+          class="max-h-[60px] max-w-[108px]"
+          draggable="false"
+        />
 
         <div class="footer_links">
           <div class="relative">
-            <input type="email" placeholder="Schrijf je in voor onze newsletter" class="footer_links-signup"
-              v-model="email" :class="{ '!border-red-500': formError }" />
-            <p class="py-2 px-0.5 text-red-500 absolute -bottom-10 left-0" v-if="formError">
+            <input
+              type="email"
+              placeholder="Schrijf je in voor onze newsletter"
+              class="footer_links-signup"
+              v-model="email"
+              :class="{ '!border-red-500': formError }"
+            />
+            <p
+              class="py-2 px-0.5 text-red-500 absolute -bottom-10 left-0"
+              v-if="formError"
+            >
               Er is iets fouts gegaan
             </p>
-            <p class="py-2 px-0.5 text-green-500 absolute -bottom-10 left-0" v-if="formSuccess">
+            <p
+              class="py-2 px-0.5 text-green-500 absolute -bottom-10 left-0"
+              v-if="formSuccess"
+            >
               Success, welkom!
             </p>
           </div>
-          <Button variant="secondary" text="signup" class="h-fit" :class="{
-            'success mt-8 tablet:mt-0': formSuccess,
-            'mt-8 tablet:mt-0': formError,
-          }" @click="submitForm" />
+          <Button
+            variant="secondary"
+            text="signup"
+            class="h-fit"
+            :class="{
+              'success mt-8 tablet:mt-0': formSuccess,
+              'mt-8 tablet:mt-0': formError,
+            }"
+            @click="submitForm"
+          />
         </div>
       </div>
       <div class="footer__row">
