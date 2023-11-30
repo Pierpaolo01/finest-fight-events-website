@@ -3,6 +3,11 @@
     <SectionHeroEvent :data="formattedData" />
     <SectionEventLineup :data="formattedData" />
     <SectionEventTickets :data="formattedData" />
+    <Section class="bg-ffe-bg">
+      <Container>
+        <MansoryGrid :items="formattedData?.collage" />
+      </Container>
+    </Section>
   </div>
 </template>
 
@@ -20,6 +25,7 @@ const { data } = await useAsyncData(`events-${route.params.id}`, () =>
       },
       hero_image: "*",
       event_tickets: "*",
+      collage: "*",
     },
   })
 );

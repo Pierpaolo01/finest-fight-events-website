@@ -29,6 +29,8 @@ export const EventDTO = (data: any[]) => {
       event_fighters: attributes.event_fighters?.data.map((fighter: any) =>
         EventFighterDTO(fighter)
       ),
+      collage: attributes.collage?.data.map((asset: any) => MediaDTO(asset)),
+
       createdAt: attributes.createdAt,
       updatedAt: attributes.updatedAt,
       publishedAt: attributes.publishedAt,
@@ -57,10 +59,12 @@ export const SingleEventDTO = (data: any) => {
     event_tickets: attributes.event_tickets?.data.map((ticket: any) =>
       EventTicketsDTO(ticket)
     ),
+    ticket_link: attributes.ticket_link,
     event_fighters: attributes.event_fighters?.data.map((fighter: any) =>
       EventFighterDTO(fighter)
     ),
-    ticket_link: attributes.ticket_link,
+    collage: attributes.collage?.data.map((asset: any) => MediaDTO(asset)),
+
     createdAt: attributes.createdAt,
     updatedAt: attributes.updatedAt,
     publishedAt: attributes.publishedAt,
