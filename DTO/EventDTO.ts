@@ -57,6 +57,9 @@ export const SingleEventDTO = (data: any) => {
     event_tickets: attributes.event_tickets?.data.map((ticket: any) =>
       EventTicketsDTO(ticket)
     ),
+    event_fighters: attributes.event_fighters?.data.map((fighter: any) =>
+      EventFighterDTO(fighter)
+    ),
     ticket_link: attributes.ticket_link,
     createdAt: attributes.createdAt,
     updatedAt: attributes.updatedAt,

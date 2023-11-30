@@ -23,57 +23,46 @@
             </span>
           </h2>
         </div>
-        <div class="lineup-container__lineup" v-if="data?.lineups.length">
+        <div
+          v-if="data?.event_fighters"
+          class="grid grid-cols-2 text-left text-white gap-4"
+        >
+          <div class="col-span-1 divide-y flex flex-col">
+            <span
+              v-for="fighter in fightersLeft"
+              :key="fighter.id"
+              class="py-2"
+            >
+              {{ fighter.name }}
+            </span>
+          </div>
+          <div class="col-span-1 divide-y flex flex-col">
+            <span
+              v-for="fighter in fightersRight"
+              :key="fighter.id"
+              class="py-2"
+            >
+              {{ fighter.name }}
+            </span>
+          </div>
           <div
-            v-for="lineup in data?.lineups"
-            :key="lineup.id"
-            class="lineup-container__lineup--item"
+            class="col-span-2 flex justify-center items-center"
+            v-if="data?.event_fighters?.length > 20"
           >
-            <div class="triangle-top-left"></div>
-            <div class="fighter-column">
-              <div>
-                <h3 class="text-xl font-semibold">{{ lineup.fighterAName }}</h3>
-                <p class="text-sm">
-                  {{ lineup.fighterANickname }} <span class="opacity-0">.</span>
-                </p>
-              </div>
-              <img
-                :src="lineup.fighterACover.url"
-                alt="fighter_a"
-                class="fighter"
-                draggable="false"
-              />
-            </div>
-            <div>
-              <img
-                src="/ffe-versus.png"
-                class="w-full h-auto self-start max-w-[60px] tablet:max-w-[80px] mx-auto"
-                alt="versus"
-                draggable="false"
-              />
-            </div>
-            <div class="fighter-column reverse">
-              <div class="text-center">
-                <h3 class="text-xl font-semibold">{{ lineup.fighterBName }}</h3>
-                <p class="text-sm">
-                  {{ lineup.fighterBNickname }} <span class="opacity-0">.</span>
-                </p>
-              </div>
-              <img
-                :src="lineup.fighterBCover.url"
-                alt="fighter_b"
-                class="fighter"
-                draggable="false"
-              />
-            </div>
-            <div class="triangle-bottom-right"></div>
+            <div class="border-b h-1 w-full" />
+            <Button
+              variant="secondary"
+              text="toon meer"
+              class="flex-shrink-0"
+            />
+            <div class="border-b h-1 w-full" />
           </div>
         </div>
         <p
           v-else
           class="lineup-container__lineup text-left p-4 text-white/60 text-xl"
         >
-          Nog geen lineup beschikbaar
+          Er zijn nog geen vechters bekend.
         </p>
       </div>
     </Container>
@@ -86,11 +75,19 @@ import useFormattedDate from "~/composables/useDateFormat";
 
 const { format } = useFormattedDate();
 
-defineProps({
+const props = defineProps({
   data: {
     type: Object as PropType<SingleEventDTOType>,
     required: true,
   },
+});
+
+const fightersLeft = computed(() => {
+  return props.data?.event_fighters?.slice(0, 10);
+});
+
+const fightersRight = computed(() => {
+  return props.data?.event_fighters?.slice(10, 20);
 });
 </script>
 
@@ -181,3 +178,50 @@ defineProps({
   }
 }
 </style>
+
+<!-- <div class="lineup-container__lineup" v-if="data?.lineups.length">
+          <div
+            v-for="lineup in data?.lineups"
+            :key="lineup.id"
+            class="lineup-container__lineup--item"
+          >
+            <div class="triangle-top-left"></div>
+            <div class="fighter-column">
+              <div>
+                <h3 class="text-xl font-semibold">{{ lineup.fighterAName }}</h3>
+                <p class="text-sm">
+                  {{ lineup.fighterANickname }} <span class="opacity-0">.</span>
+                </p>
+              </div>
+              <img
+                :src="lineup.fighterACover.url"
+                alt="fighter_a"
+                class="fighter"
+                draggable="false"
+              />
+            </div>
+            <div>
+              <img
+                src="/ffe-versus.png"
+                class="w-full h-auto self-start max-w-[60px] tablet:max-w-[80px] mx-auto"
+                alt="versus"
+                draggable="false"
+              />
+            </div>
+            <div class="fighter-column reverse">
+              <div class="text-center">
+                <h3 class="text-xl font-semibold">{{ lineup.fighterBName }}</h3>
+                <p class="text-sm">
+                  {{ lineup.fighterBNickname }} <span class="opacity-0">.</span>
+                </p>
+              </div>
+              <img
+                :src="lineup.fighterBCover.url"
+                alt="fighter_b"
+                class="fighter"
+                draggable="false"
+              />
+            </div>
+            <div class="triangle-bottom-right"></div>
+          </div>
+        </div> -->

@@ -7,7 +7,7 @@ export const EventFighterDTO = (data: any) => {
 
   return {
     id: id as number,
-    fighter_name: attributes.fighter_name as string,
+    name: attributes.fighter_name as string,
   };
 };
 
