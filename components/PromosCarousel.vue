@@ -5,16 +5,16 @@
       :style="{ transform: `translateX(-${currentIndex * 100}%)` }"
     >
       <div
-        class="carousel-item cursor-pointer"
+        class="carousel-item cursor-pointer relative"
         v-for="(item, index) in items"
         :key="index"
         @click="toggleMute(index)"
       >
-        <!-- TODO Why is this video not showing? -->
         <div class="carousel-item__video">
           <video
             v-if="item?.mime === 'video'"
             :id="'video' + index"
+            :ref="'video' + index"
             :src="item?.url"
             class="carousel-item__video-file"
             loop
@@ -28,6 +28,13 @@
             :src="item?.url"
             class="carousel-item__video-file"
           />
+          <div
+            class="rounded-full p-2 absolute bottom-4 right-4"
+            v-if="item?.mime === 'video'"
+          >
+            <IconMute v-if="mutedStates[index]" />
+            <IconUnMute v-if="!mutedStates[index]" />
+          </div>
         </div>
       </div>
     </div>
@@ -68,7 +75,11 @@ const props = defineProps({
   },
 });
 
+const mutedStates = ref(props.items.map(() => true));
+
 const toggleMute = (index: number) => {
+  mutedStates.value[index] = !mutedStates.value[index];
+
   var video: any = document.getElementById("video" + index);
   if (video.muted) {
     video.muted = false;
@@ -89,10 +100,13 @@ watch(currentIndex, (_, previous) => {
 });
 
 const nextItem = () => {
+  mutedStates.value[currentIndex.value] = true;
   currentIndex.value = (currentIndex.value + 1) % (props.items ?? []).length;
 };
 
 const prevItem = () => {
+  mutedStates.value[currentIndex.value] = true;
+
   currentIndex.value =
     (currentIndex.value - 1 + (props.items ?? []).length) %
     (props.items ?? []).length;
