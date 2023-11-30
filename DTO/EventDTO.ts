@@ -1,3 +1,4 @@
+import { EventFighterDTO } from "./EventFighterDTO";
 import { EventTicketsDTO } from "./EventTicketsDTO";
 import { LineupDTO } from "./LineupDTO";
 import { MediaDTO } from "./MediaDTO";
@@ -24,6 +25,9 @@ export const EventDTO = (data: any[]) => {
       ticket_link: attributes.ticket_link,
       event_tickets: attributes.event_tickets?.data.map((ticket: any) =>
         EventTicketsDTO(ticket)
+      ),
+      event_fighters: attributes.event_fighters?.data.map((fighter: any) =>
+        EventFighterDTO(fighter)
       ),
       createdAt: attributes.createdAt,
       updatedAt: attributes.updatedAt,

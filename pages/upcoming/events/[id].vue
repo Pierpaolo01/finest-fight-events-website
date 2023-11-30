@@ -25,7 +25,7 @@ const { data } = await useAsyncData(`events-${route.params.id}`, () =>
 );
 
 const formattedData = SingleEventDTO(data.value?.data);
-console.log(formattedData);
+
 useHead({
   title: `${formattedData?.name.toUpperCase()} - Finest Fight Events`,
 });
