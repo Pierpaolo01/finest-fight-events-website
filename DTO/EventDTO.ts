@@ -29,7 +29,8 @@ export const EventDTO = (data: any[]) => {
       event_fighters: attributes.event_fighters?.data.map((fighter: any) =>
         EventFighterDTO(fighter)
       ),
-      collage: attributes.collage?.data.map((asset: any) => MediaDTO(asset)),
+      gallery: attributes.gallery?.data?.map((asset: any) => MediaDTO(asset)),
+      gallery_heading: attributes.gallery_heading,
 
       createdAt: attributes.createdAt,
       updatedAt: attributes.updatedAt,
@@ -63,7 +64,8 @@ export const SingleEventDTO = (data: any) => {
     event_fighters: attributes.event_fighters?.data.map((fighter: any) =>
       EventFighterDTO(fighter)
     ),
-    collage: attributes.collage?.data.map((asset: any) => MediaDTO(asset)),
+    gallery: attributes.gallery?.data?.map((asset: any) => MediaDTO(asset)),
+    gallery_heading: attributes.gallery_heading,
 
     createdAt: attributes.createdAt,
     updatedAt: attributes.updatedAt,

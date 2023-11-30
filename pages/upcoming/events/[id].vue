@@ -5,7 +5,10 @@
     <SectionEventTickets :data="formattedData" />
     <Section class="bg-ffe-bg">
       <Container>
-        <MansoryGrid :items="formattedData?.collage" />
+        <h2 class="uppercase text-3xl font-bold cursor-pointer text-white mb-4">
+          {{ formattedData?.gallery_heading }}
+        </h2>
+        <MansoryGrid :items="formattedData?.gallery" />
       </Container>
     </Section>
   </div>
@@ -25,7 +28,7 @@ const { data } = await useAsyncData(`events-${route.params.id}`, () =>
       },
       hero_image: "*",
       event_tickets: "*",
-      collage: "*",
+      gallery: "*",
     },
   })
 );
