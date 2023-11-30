@@ -85,7 +85,15 @@ watch(gridDisplayItems, () => {
 <style scoped>
 .masonry-grid {
   @apply gap-4;
-  column-count: 3;
+  column-count: 1;
+
+  @screen mobile {
+    column-count: 2;
+  }
+
+  @screen laptop {
+    column-count: 3;
+  }
 }
 
 .masonry-grid-item {

@@ -52,7 +52,7 @@ const initObserver = () => {
     },
     {
       rootMargin: "0px",
-      threshold: 0,
+      threshold: 0.1,
     }
   );
 
