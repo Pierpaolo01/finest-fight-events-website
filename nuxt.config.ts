@@ -1,4 +1,6 @@
 import axios from "axios";
+import { EventDTO } from "./DTO/EventDTO";
+import { version } from "vue";
 
 export default defineNuxtConfig({
   devtools: { enabled: true },
@@ -9,9 +11,17 @@ export default defineNuxtConfig({
         "https://finest-fight-events-cms-9b085a52c151.herokuapp.com/api/events?populate[events]"
       );
 
+      const now = new Date().toISOString();
+      const formattedData = EventDTO(data.value?.data ?? []);
+
       nitroConfig.prerender?.routes?.push(
         "/",
-        ...data.data.map((event: any) => `/upcoming/events/${event.id}`)
+        ...formattedData
+          .filter(({ date }) => date > now)
+          .map((event: any) => `/upcoming/events/${event.id}`),
+        ...formattedData
+          .filter(({ date }) => date < now)
+          .map((event: any) => `/past/events/${event.id}`)
       );
     },
   },

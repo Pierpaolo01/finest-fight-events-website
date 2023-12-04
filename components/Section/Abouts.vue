@@ -17,7 +17,7 @@
           />
         </div>
         <div class="abouts-section__about-item">
-          <h4>{{ about.title }}</h4>
+          <h4 class="uppercase font-bold text-xl mb-4">{{ about.title }}</h4>
           <p>
             {{ about.description }}
           </p>

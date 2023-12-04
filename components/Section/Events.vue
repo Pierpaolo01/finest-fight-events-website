@@ -24,7 +24,7 @@
       </div>
       <div
         class="space-y-6 divide-y divide-ffe-border"
-        v-if="selectedView === 'upcoming'"
+        v-if="displayEvents.length"
       >
         <div
           class="events-section__event pt-6 first:pt-0"
@@ -44,10 +44,20 @@
             <p class="font-semibold text-xl">{{ event.name }}</p>
             <p>{{ event.teaser }}</p>
             <div class="flex flex-col tablet:flex-row gap-4">
-              <a :href="event.ticket_link" target="_blank">
+              <a
+                :href="event.ticket_link"
+                target="_blank"
+                v-if="selectedView === 'upcoming'"
+              >
                 <Button variant="primary" text="tickets" class="w-full" />
               </a>
-              <NuxtLink :to="`/upcoming/events/${event.id}`">
+              <NuxtLink
+                :to="
+                  selectedView === 'upcoming'
+                    ? `/upcoming/events/${event.id}`
+                    : `/past/events/${event.id}`
+                "
+              >
                 <Button variant="secondary" text="meer info" class="w-full" />
               </NuxtLink>
             </div>
@@ -55,7 +65,12 @@
         </div>
       </div>
       <p v-else class="text-center p-4 text-white/60 text-xl">
-        Er zijn geen gebeurtenissen uit het verleden
+        <span v-if="selectedView === 'past' && !displayEvents.length">
+          Er zijn geen evenementen uit het verleden
+        </span>
+        <span v-if="selectedView === 'upcoming' && !displayEvents.length">
+          Er zijn geen geplande evenementen
+        </span>
       </p>
     </Container>
   </Section>
@@ -65,8 +80,6 @@
 import { EventDTO } from "~/DTO/EventDTO";
 
 import type { Event } from "~/DTO/EventDTO";
-
-const selectedView = ref("upcoming");
 
 const { find } = useStrapi();
 const { format } = useDateFormat();
@@ -83,14 +96,16 @@ const { data } = await useAsyncData("events", () =>
 );
 
 const formattedData: Event = EventDTO(data.value?.data ?? []);
+const now = new Date().toISOString();
 
-//TODO Test this once there's more events to display
+const hasUpcomingEvents = formattedData.some(({ date }) => date > now);
+
+const selectedView = ref(hasUpcomingEvents ? "upcoming" : "past");
+
 const displayEvents = computed(() => {
-  const now = new Date().toISOString();
-
   if (selectedView.value === "upcoming") {
     return formattedData
-      .filter(({ date }) => date > new Date().toISOString())
+      .filter(({ date }) => date > now)
       .sort((a, b) => {
         const dateA = new Date(a.date);
         const dateB = new Date(b.date);

@@ -54,6 +54,7 @@
               variant="secondary"
               text="toon meer"
               class="flex-shrink-0"
+              @click="showMore = !showMore"
             />
             <div class="border-b h-1 w-full" />
           </div>
@@ -82,11 +83,24 @@ const props = defineProps({
   },
 });
 
+const showMore = ref(false);
+
 const fightersLeft = computed(() => {
+  if (showMore.value)
+    return props.data?.event_fighters.slice(
+      0,
+      props.data?.event_fighters.length / 2
+    );
   return props.data?.event_fighters?.slice(0, 10);
 });
 
 const fightersRight = computed(() => {
+  if (showMore.value)
+    return props.data?.event_fighters.slice(
+      props.data?.event_fighters.length / 2,
+      props.data?.event_fighters.length
+    );
+
   return props.data?.event_fighters?.slice(10, 20);
 });
 </script>
