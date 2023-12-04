@@ -1,6 +1,6 @@
 <template>
   <div v-if="formattedData">
-    <SectionHeroEvent :data="formattedData" />
+    <SectionHeroEvent :data="formattedData" isPastEvent />
     <SectionEventLineup :data="formattedData" />
     <Section class="bg-ffe-bg">
       <Container>

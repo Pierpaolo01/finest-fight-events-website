@@ -1,7 +1,11 @@
 <template>
-  <section class="relative h-screen w-full bg-cover bg-center flex items-center justify-center"
-    :style="`background-image: url(${data?.data.attributes.featured_event.data.attributes.hero_image.data.attributes.url})`">
-    <div class="h-fit w-fit bg-ffe-bg/60 p-4 rounded-md text-center text-white font-bold space-y-5">
+  <section
+    class="relative h-screen w-full bg-cover bg-center flex items-center justify-center"
+    :style="`background-image: url(${data?.data.attributes.featured_event.data.attributes.hero_image.data.attributes.url})`"
+  >
+    <div
+      class="h-fit w-fit bg-ffe-bg/60 p-4 rounded-md text-center text-white font-bold space-y-5"
+    >
       <p class="font-mont text-2xl uppercase">
         {{ format(data?.data.attributes.featured_event.data.attributes.date) }}
       </p>
@@ -12,10 +16,26 @@
         {{ data?.data.attributes.featured_event.data.attributes.location }}
       </p>
       <div class="space-x-6">
-        <NuxtLink :to="`/upcoming/events/${data?.data.attributes.featured_event.data.id}`">
+        <NuxtLink
+          v-if="
+            data?.data.attributes.featured_event.data.attributes.date > date
+          "
+          :to="`/upcoming/events/${data?.data.attributes.featured_event.data.id}`"
+        >
           <Button variant="secondary" text="meer info" />
         </NuxtLink>
-        <NuxtLink :to="`/upcoming/events/${data?.data.attributes.featured_event.data.id}#tickets`">
+        <NuxtLink
+          v-else
+          :to="`/past/events/${data?.data.attributes.featured_event.data.id}`"
+        >
+          <Button variant="secondary" text="meer info" />
+        </NuxtLink>
+        <NuxtLink
+          :to="`/upcoming/events/${data?.data.attributes.featured_event.data.id}#tickets`"
+          v-if="
+            data?.data.attributes.featured_event.data.attributes.date > date
+          "
+        >
           <Button variant="primary" text="tickets" />
         </NuxtLink>
       </div>
@@ -38,4 +58,6 @@ const { data } = await useAsyncData("hero-section", () =>
     },
   })
 );
+
+const date = new Date().toISOString;
 </script>

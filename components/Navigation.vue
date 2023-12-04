@@ -10,7 +10,7 @@
         >
           online store
         </a>
-        <NuxtLink to="#abouts" class="link"> about </NuxtLink>
+        <NuxtLink to="/#abouts" class="link"> about </NuxtLink>
       </div>
       <div class="self-center">
         <NuxtLink to="/">
