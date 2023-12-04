@@ -16,7 +16,7 @@ useSeoMeta({
   twitterTitle: "Finest Fight Events",
   twitterDescription:
     "Bij Finest Fight Events brengen we het beste van twee werelden samen: de opwindende wereld van vechtsport en de verfijnde kunst van het dineren.",
-  twitterImage: "/FFE_Logo-dark.png",
+  twitterImage: "/SEO_logo.jpeg",
   twitterCard: "summary",
 });
 

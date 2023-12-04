@@ -4,7 +4,7 @@
       class="relative h-screen w-full bg-cover bg-center flex items-center justify-center tablet:justify-start"
     >
       <div
-        class="-mt-[10%] h-fit w-fit text-center tablet:text-left p-4 rounded-md text-white font-bold space-y-5"
+        class="-mt-[10%] h-fit w-fit text-center tablet:text-left bg-ffe-bg/60 laptop:bg-transparent p-4 rounded-md text-white font-bold space-y-5"
       >
         <p class="font-mont text-2xl">
           {{ format(data?.date) }}
