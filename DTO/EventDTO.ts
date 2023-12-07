@@ -1,5 +1,6 @@
 import { EventFighterDTO } from "./EventFighterDTO";
 import { EventTicketsDTO } from "./EventTicketsDTO";
+import { EventVideoDTO } from "./EventVideoDTO";
 import { LineupDTO } from "./LineupDTO";
 import { MediaDTO } from "./MediaDTO";
 
@@ -31,6 +32,9 @@ export const EventDTO = (data: any[]) => {
       ),
       gallery: attributes.gallery?.data?.map((asset: any) => MediaDTO(asset)),
       gallery_heading: attributes.gallery_heading,
+      event_video: attributes.event_video?.data?.map((video: any) =>
+        EventVideoDTO(video)
+      ),
 
       createdAt: attributes.createdAt,
       updatedAt: attributes.updatedAt,
@@ -66,6 +70,9 @@ export const SingleEventDTO = (data: any) => {
     ),
     gallery: attributes.gallery?.data?.map((asset: any) => MediaDTO(asset)),
     gallery_heading: attributes.gallery_heading,
+    event_video: attributes.event_video?.data?.map((video: any) =>
+      EventVideoDTO(video)
+    ),
 
     createdAt: attributes.createdAt,
     updatedAt: attributes.updatedAt,
