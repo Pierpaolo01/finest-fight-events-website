@@ -2,6 +2,7 @@
   <div v-if="formattedData">
     <SectionHeroEvent :data="formattedData" isPastEvent />
     <SectionEventLineup :data="formattedData" />
+    <SectionEventVideos :data="formattedData" />
     <Section class="bg-ffe-bg">
       <Container>
         <h2 class="uppercase text-3xl font-bold cursor-pointer text-white mb-4">
@@ -29,6 +30,7 @@ const { data } = await useAsyncData(`events-${route.params.id}`, () =>
       event_tickets: "*",
       event_fighters: "*",
       gallery: "*",
+      event_videos: "*",
     },
   })
 );

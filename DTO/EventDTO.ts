@@ -32,7 +32,7 @@ export const EventDTO = (data: any[]) => {
       ),
       gallery: attributes.gallery?.data?.map((asset: any) => MediaDTO(asset)),
       gallery_heading: attributes.gallery_heading,
-      event_video: attributes.event_video?.data?.map((video: any) =>
+      event_videos: attributes.event_videos?.data?.map((video: any) =>
         EventVideoDTO(video)
       ),
 
@@ -70,7 +70,7 @@ export const SingleEventDTO = (data: any) => {
     ),
     gallery: attributes.gallery?.data?.map((asset: any) => MediaDTO(asset)),
     gallery_heading: attributes.gallery_heading,
-    event_video: attributes.event_video?.data?.map((video: any) =>
+    event_videos: attributes.event_videos?.data?.map((video: any) =>
       EventVideoDTO(video)
     ),
 

@@ -17,7 +17,6 @@
         <div class="lineup-container__heading">
           <h2 class="uppercase text-3xl font-bold cursor-pointer">
             Vechters
-            <!-- TODO table grid layout, default 15 rows w/ show more button -->
             <span class="font-semibool italic">
               {{ format(data?.date) }}
             </span>
@@ -119,7 +118,7 @@ const fightersRight = computed(() => {
   /* bg-ffe-off-white shadow-inset rounded  */
 
   &__heading {
-    @apply p-4 text-white space-x-4 tablet:space-x-6 flex items-center text-left;
+    @apply py-4 text-white space-x-4 tablet:space-x-6 flex items-center text-left;
     /*  border-b border-ffe-border/30 */
   }
 
