@@ -14,7 +14,7 @@ export default {
   props: {
     variant: {
       type: String,
-      default: "primary", // 'primary' or 'secondary'
+      default: "primary", // 'primary' or 'secondary' or 'tertiary'
     },
     text: {
       type: String,
@@ -30,5 +30,9 @@ export default {
 
 .secondary {
   @apply bg-white/10 border border-white;
+}
+
+.tertiary {
+  @apply bg-transparent border border-ffe-bg text-ffe-bg;
 }
 </style>
