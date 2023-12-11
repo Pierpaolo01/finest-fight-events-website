@@ -3,17 +3,18 @@
     class="bg-ffe-bg"
     @mouseenter="isFocused = true"
     @mouseleave="isFocused = false"
-    v-if="Object.keys($route.query).length !== 0"
   >
     <Container class="relative">
-      <div class="flex overflow-x-auto no-scrollbar">
+      <div
+        class="flex overflow-x-auto pb-4"
+        ref="carouselContainer"
+        @mouseenter="stopScrolling"
+        @mouseleave="startScrolling"
+      >
         <div
           v-for="video in props.data?.event_videos"
           :key="video.id"
-          class="flex-shrink-0 w-full sm:w-1/3 scroll space-x-4 cursor-pointer"
-          :class="{
-            'pause-scrolling': isFocused || props.data?.event_videos.length < 4,
-          }"
+          class="flex-shrink-0 w-full sm:w-1/3 h-auto space-x-4 cursor-pointer"
           @click="
             showModal = true;
             selectedVideo = video;
@@ -24,6 +25,7 @@
               class="rounded-md"
               :src="getThumbnailUrl(video.link)"
               :alt="`Thumbnail for video ${video.id}`"
+              draggable="false"
             />
             <span
               class="text-white font-semibold text-xl absolute top-0 mx-auto p-4"
@@ -35,7 +37,7 @@
       </div>
       <Teleport to="body">
         <Modal :show="showModal" @update:show="showModal = $event">
-          <div class="">
+          <div>
             <div v-if="isLoggedIn">
               <h5 class="font-semibold text-xl mb-4">
                 {{ selectedVideo.title }}
@@ -136,9 +138,36 @@ const submitForm = async () => {
   }
 };
 
+const carouselContainer = ref();
+let scrollInterval: any;
+
+const startScrolling = () => {
+  const speed = 1; // Adjust the speed as needed
+  scrollInterval = setInterval(() => {
+    if (carouselContainer.value) {
+      carouselContainer.value.scrollLeft += speed;
+
+      // Reset scroll position if it reaches the end
+      if (
+        carouselContainer.value.scrollWidth ===
+        carouselContainer.value.scrollLeft + carouselContainer.value.clientWidth
+      ) {
+        carouselContainer.value.scrollLeft = 0;
+      }
+    }
+  }, 20); // Adjust the interval for smoother animation
+};
+
+const stopScrolling = () => {
+  clearInterval(scrollInterval);
+};
+
 onMounted(() => {
   checkIsLoggedIn();
+  startScrolling();
 });
+
+onUnmounted(stopScrolling);
 </script>
 
 <style scoped>

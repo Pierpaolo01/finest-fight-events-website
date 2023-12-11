@@ -1,7 +1,7 @@
 <template>
   <div v-if="show" class="modal-overlay" @click.self="closeModal">
     <div
-      class="modal-content bg-ffe-off-white relative w-10/12 tablet:min-w-[500px] tablet:w-auto"
+      class="modal-content bg-ffe-off-white relative w-10/12 tablet:min-w-[500px]"
     >
       <slot></slot>
       <button @click="closeModal" class="absolute top-4 right-6">
