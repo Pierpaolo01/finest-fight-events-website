@@ -15,28 +15,31 @@
       <p class="font-mont text-2xl">
         {{ data?.data.attributes.featured_event.data.attributes.location }}
       </p>
-      <div class="space-x-6">
+      <div
+        class="space-x-6"
+        v-if="data?.data.attributes.featured_event.data.attributes.date > date"
+      >
         <NuxtLink
-          v-if="
-            data?.data.attributes.featured_event.data.attributes.date > date
-          "
           :to="`/upcoming/events/${data?.data.attributes.featured_event.data.id}`"
         >
           <Button variant="secondary" text="meer info" />
         </NuxtLink>
         <NuxtLink
-          v-else
+          :to="`/upcoming/events/${data?.data.attributes.featured_event.data.id}#tickets`"
+        >
+          <Button variant="primary" text="tickets" />
+        </NuxtLink>
+      </div>
+      <div class="space-x-6" v-else>
+        <NuxtLink
           :to="`/past/events/${data?.data.attributes.featured_event.data.id}`"
         >
           <Button variant="secondary" text="meer info" />
         </NuxtLink>
         <NuxtLink
-          :to="`/upcoming/events/${data?.data.attributes.featured_event.data.id}#tickets`"
-          v-if="
-            data?.data.attributes.featured_event.data.attributes.date > date
-          "
+          :to="`/past/events/${data?.data.attributes.featured_event.data.id}#highlights`"
         >
-          <Button variant="primary" text="tickets" />
+          <Button variant="primary" text="bekijk highlights" />
         </NuxtLink>
       </div>
     </div>

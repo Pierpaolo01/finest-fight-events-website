@@ -1,90 +1,93 @@
 <template>
-  <Section
-    class="bg-ffe-bg"
-    @mouseenter="isFocused = true"
-    @mouseleave="isFocused = false"
-  >
-    <Container class="relative">
-      <h2 class="uppercase text-3xl font-bold cursor-pointer text-white mb-4">
-        Highlights
-      </h2>
-      <div
-        class="flex overflow-x-auto pb-4"
-        ref="carouselContainer"
-        @mouseenter="stopScrolling"
-        @mouseleave="startScrolling"
-        @touchstart="stopScrolling"
-        @touchend="startMobileScrolling"
-      >
+  <div id="highlights">
+    <Section
+      v-if="props.data?.event_videos.length > 0"
+      class="bg-ffe-bg"
+      @mouseenter="isFocused = true"
+      @mouseleave="isFocused = false"
+    >
+      <Container class="relative">
+        <h2 class="uppercase text-3xl font-bold cursor-pointer text-white mb-4">
+          Highlights
+        </h2>
         <div
-          v-for="video in props.data?.event_videos"
-          :key="video.id"
-          class="flex-shrink-0 w-full sm:w-1/3 h-auto space-x-4 cursor-pointer"
-          @click="
-            showModal = true;
-            selectedVideo = video;
-          "
+          class="flex overflow-x-auto pb-4"
+          ref="carouselContainer"
+          @mouseenter="stopScrolling"
+          @mouseleave="startScrolling"
+          @touchstart="stopScrolling"
+          @touchend="startMobileScrolling"
         >
-          <div class="px-2 relative">
-            <img
-              class="rounded-md"
-              :src="getThumbnailUrl(video.link)"
-              :alt="`Thumbnail for video ${video.id}`"
-              draggable="false"
-            />
-            <span
-              class="text-white font-semibold text-xl absolute top-0 mx-auto p-4"
-            >
-              {{ video.title }}
-            </span>
+          <div
+            v-for="video in props.data?.event_videos"
+            :key="video.id"
+            class="flex-shrink-0 w-full sm:w-1/3 h-auto space-x-4 cursor-pointer"
+            @click="
+              showModal = true;
+              selectedVideo = video;
+            "
+          >
+            <div class="px-2 relative">
+              <img
+                class="rounded-md"
+                :src="getThumbnailUrl(video.link)"
+                :alt="`Thumbnail for video ${video.id}`"
+                draggable="false"
+              />
+              <span
+                class="text-white font-semibold text-xl absolute top-0 mx-auto p-4"
+              >
+                {{ video.title }}
+              </span>
+            </div>
           </div>
         </div>
-      </div>
-      <Teleport to="body">
-        <Modal :show="showModal" @update:show="showModal = $event">
-          <div class="pt-4">
-            <div v-if="isLoggedIn">
-              <h5 class="font-semibold text-xl mb-4">
-                {{ selectedVideo.title }}
-              </h5>
-              <iframe
-                class="aspect-video w-full h-full"
-                :src="`https://www.youtube.com/embed/${selectedVideo.link}`"
-                allowfullscreen="true"
-              ></iframe>
-            </div>
-            <div v-else class="w-fit mx-auto">
-              <div class="flex flex-col items-start space-y-4 w-fit">
-                <h5 class="font-semibold text-xl">
-                  Login om de video te bekijken
+        <Teleport to="body">
+          <Modal :show="showModal" @update:show="showModal = $event">
+            <div class="pt-4">
+              <div v-if="isLoggedIn">
+                <h5 class="font-semibold text-xl mb-4">
+                  {{ selectedVideo.title }}
                 </h5>
-                <input
-                  v-model="email"
-                  placeholder="Voer uw email address heir in"
-                  class="border rounded-md px-4 py-2 w-full"
-                  :class="{
-                    'border-red-500': formError,
-                  }"
-                />
-                <p class="px-0.5 text-red-500" v-if="formError">
-                  Controleer uw email address
-                </p>
-                <Button
-                  variant="tertiary"
-                  text="login"
-                  class="h-fit"
-                  :class="{
-                    'mt-8 tablet:mt-0': formError,
-                  }"
-                  @click="submitForm"
-                />
+                <iframe
+                  class="aspect-video w-full h-full"
+                  :src="`https://www.youtube.com/embed/${selectedVideo.link}`"
+                  allowfullscreen="true"
+                ></iframe>
+              </div>
+              <div v-else class="w-fit mx-auto">
+                <div class="flex flex-col items-start space-y-4 w-fit">
+                  <h5 class="font-semibold text-xl">
+                    Login om de video te bekijken
+                  </h5>
+                  <input
+                    v-model="email"
+                    placeholder="Voer uw email address heir in"
+                    class="border rounded-md px-4 py-2 w-full"
+                    :class="{
+                      'border-red-500': formError,
+                    }"
+                  />
+                  <p class="px-0.5 text-red-500" v-if="formError">
+                    Controleer uw email address
+                  </p>
+                  <Button
+                    variant="tertiary"
+                    text="login"
+                    class="h-fit"
+                    :class="{
+                      'mt-8 tablet:mt-0': formError,
+                    }"
+                    @click="submitForm"
+                  />
+                </div>
               </div>
             </div>
-          </div>
-        </Modal>
-      </Teleport>
-    </Container>
-  </Section>
+          </Modal>
+        </Teleport>
+      </Container>
+    </Section>
+  </div>
 </template>
 
 <script lang="ts" setup>
