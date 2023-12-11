@@ -5,11 +5,16 @@
     @mouseleave="isFocused = false"
   >
     <Container class="relative">
+      <h2 class="uppercase text-3xl font-bold cursor-pointer text-white mb-4">
+        Highlights
+      </h2>
       <div
         class="flex overflow-x-auto pb-4"
         ref="carouselContainer"
         @mouseenter="stopScrolling"
         @mouseleave="startScrolling"
+        @touchstart="stopScrolling"
+        @touchend="startMobileScrolling"
       >
         <div
           v-for="video in props.data?.event_videos"
@@ -37,7 +42,7 @@
       </div>
       <Teleport to="body">
         <Modal :show="showModal" @update:show="showModal = $event">
-          <div>
+          <div class="pt-4">
             <div v-if="isLoggedIn">
               <h5 class="font-semibold text-xl mb-4">
                 {{ selectedVideo.title }}
@@ -78,12 +83,6 @@
           </div>
         </Modal>
       </Teleport>
-      <button
-        class="absolute -top-16 right-6 tablet:12 bg-blue-500 text-white p-2 m-2 rounded"
-        @click="showGrid = !showGrid"
-      >
-        show more
-      </button>
     </Container>
   </Section>
 </template>
@@ -147,7 +146,6 @@ const startScrolling = () => {
     if (carouselContainer.value) {
       carouselContainer.value.scrollLeft += speed;
 
-      // Reset scroll position if it reaches the end
       if (
         carouselContainer.value.scrollWidth ===
         carouselContainer.value.scrollLeft + carouselContainer.value.clientWidth
@@ -155,7 +153,17 @@ const startScrolling = () => {
         carouselContainer.value.scrollLeft = 0;
       }
     }
-  }, 20); // Adjust the interval for smoother animation
+  }, 20);
+};
+const isTimedout = ref(false);
+
+const startMobileScrolling = () => {
+  if (isTimedout.value) return;
+  isTimedout.value = true;
+  setTimeout(() => {
+    startScrolling();
+    isTimedout.value = false;
+  }, 4000);
 };
 
 const stopScrolling = () => {

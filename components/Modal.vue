@@ -4,7 +4,7 @@
       class="modal-content bg-ffe-off-white relative w-10/12 tablet:min-w-[500px]"
     >
       <slot></slot>
-      <button @click="closeModal" class="absolute top-4 right-6">
+      <button @click="closeModal" class="absolute top-2 right-2">
         <IconClose />
       </button>
     </div>
