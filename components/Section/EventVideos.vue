@@ -62,7 +62,7 @@
                   </h5>
                   <input
                     v-model="email"
-                    placeholder="Voer uw email address heir in"
+                    placeholder="Voer uw email adres hier in"
                     class="border rounded-md px-4 py-2 w-full"
                     :class="{
                       'border-red-500': formError,
