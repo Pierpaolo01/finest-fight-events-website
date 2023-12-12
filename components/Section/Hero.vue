@@ -30,7 +30,10 @@
           <Button variant="primary" text="tickets" />
         </NuxtLink>
       </div>
-      <div class="space-x-6" v-else>
+      <div
+        class="tablet:space-x-6 flex flex-col space-y-4 tablet:space-y-0 tablet:flex-row tablet:justify-center"
+        v-else
+      >
         <NuxtLink
           :to="`/past/events/${data?.data.attributes.featured_event.data.id}`"
         >
